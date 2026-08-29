@@ -1,0 +1,43 @@
+# CloudWatch Agent Installation and Configuration
+
+## 1. Check architecture
+
+uname -m
+
+## 2. Download the CloudWatch Agent
+
+wget https://amazoncloudwatch-agent.s3.amazonaws.com/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+
+## 3. Install the CloudWatch Agent
+
+sudo dpkg -i -E ./amazon-cloudwatch-agent.deb
+
+## 4. Verify the agent
+
+/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+    -a status
+
+## 5. Create the CloudWatch Agent configuration
+
+sudo nano /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
+
+## 6. Start the CloudWatch Agent using the configuration
+
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+    -a fetch-config \
+    -m ec2 \
+    -c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \
+    -s
+
+## 7. Check agent status
+
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+    -a status
+
+## 8. Check the systemd service
+
+sudo systemctl status amazon-cloudwatch-agent
+
+## 9. Check the CloudWatch Agent log
+
+sudo tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
