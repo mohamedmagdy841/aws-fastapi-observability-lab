@@ -54,28 +54,6 @@ The project focuses on securely retrieving application configuration and secrets
 
 ---
 
-## What I Practiced
-
-- Deployed a FastAPI application on an Ubuntu EC2 `t3.micro`.
-- Used an **EC2 IAM role** instead of storing AWS access keys on the server.
-- Integrated **AWS Secrets Manager** with FastAPI using `boto3` for sensitive values such as database credentials.
-- Integrated **AWS Systems Manager Parameter Store** using `boto3` for non-sensitive application configuration.
-- Configured least-privilege IAM permissions for the EC2 workload.
-- Installed and configured the **Amazon CloudWatch Agent**.
-- Collected EC2 operating-system metrics including:
-  - CPU
-  - Memory utilization
-  - Disk utilization
-- Forwarded FastAPI application logs from the EC2 filesystem to **CloudWatch Logs**.
-- Used **CloudWatch Logs Insights** to search and filter application logs.
-- Built a CloudWatch dashboard combining infrastructure metrics and application logs.
-- Created a CPU utilization CloudWatch alarm.
-- Integrated **Amazon SNS** with email notifications.
-- Triggered a real CloudWatch alarm by generating CPU load and verified the alert through email.
-- Practiced troubleshooting by intentionally generating FastAPI errors and infrastructure load.
-
----
-
 ## AWS Services
 
 | Service | Purpose |
