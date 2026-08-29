@@ -1,0 +1,19 @@
+#!/bin/bash
+set -euxo pipefail
+
+# Install packages
+apt-get update
+apt-get install -y python3-pip python3-venv git
+
+# Create application directory
+mkdir -p /opt/app
+chown -R ubuntu:ubuntu /opt/app
+
+# Create virtual environment as ubuntu user
+sudo -u ubuntu python3 -m venv /opt/app/venv
+
+# Install Python packages
+sudo -u ubuntu /opt/app/venv/bin/pip install \
+    fastapi==0.136.3 \
+    "uvicorn[standard]==0.48.0" \
+    boto3
